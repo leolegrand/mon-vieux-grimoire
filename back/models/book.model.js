@@ -9,18 +9,18 @@ const bookSchema = mongoose.Schema({
   genre: { type: String, required: true },
   ratings: [
     {
-        userId: { type: String, required: true },
-        grade: { type: Number, required: true }
+        userId: { type: String },
+        grade: { type: Number }
     }
    ],
-   averageRatings: { type: Number }
+   averageRating: { type: Number, default: 0 }
 })
 
 bookSchema.pre('save', function (next) {
-  const ratings = this.ratings.map((rating) => rating.grade);
-  const sumOfRatings = ratings.reduce((acc, curr) => acc + curr, 0);
-  this.averageRatings = sumOfRatings / ratings.length;
-  next();
-});
+  const ratings = this.ratings.map((rating) => rating.grade)
+  const sumOfRatings = ratings.reduce((acc, curr) => acc + curr, 0)
+  this.averageRating = Math.ceil(sumOfRatings / ratings.length)
+  next()
+})
 
 module.exports = mongoose.model('Book', bookSchema)

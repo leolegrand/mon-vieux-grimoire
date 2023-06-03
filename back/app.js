@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 
 const bookRoutes = require('./routes/book.routes')
 const userRoutes = require('./routes/user.routes')
+const path = require('path');
 
 const app = express()
 
@@ -16,6 +17,7 @@ app.use((req, res, next) => {
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
+app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/auth', userRoutes);
 app.use('/api/books', bookRoutes);
 
