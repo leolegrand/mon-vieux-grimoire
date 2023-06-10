@@ -3,19 +3,23 @@ const User = require('../models/user.model.js')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const emailRegex = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
 
 exports.signup = (req, res, next) => {
-
-    
 
 // checks that the string matches the email regex
 if (!emailRegex.test(req.body.email)) {
     return res.status(410).json({message:"Email non conforme"})
-} 
+}
+
+if(!passwordRegex.test(req.body.password)){
+    return res.status(410).json({message: "Le mot de passe doit contenir au moins 8 catactères, dont une majuscule et un chiffre"})
+}
+
     // check if user is already registered in the database
     User.findOne({email: req.body.email}).then(user => {
         if(user){
-            return res.status(409).json({message:"Utilisateur déjà existant"})
+            return res.status(409).json({message: "Utilisateur déjà existant"})
         } else {
             // save the user and hash his password
             bcrypt.hash(req.body.password, 10)
