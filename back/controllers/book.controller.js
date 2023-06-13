@@ -60,11 +60,13 @@ exports.createBook = async (req, res, next) => {
   bookObject.ratings = []
   }
 
+  const filename = req.file.filename
+
   // Create a new Book from the reponse data
   const book = new Book({
     ...bookObject,
     userId: req.auth.userId,
-    imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+    imageUrl: `${req.protocol}://${req.get('host')}/images/${filename}`
   })
 
   // Save the book to MongoDB
@@ -72,6 +74,7 @@ exports.createBook = async (req, res, next) => {
     await book.save()
     res.status(201).json({ message: 'Book saved' })
   } catch (error) {      
+      fs.unlinkSync(`images/${filename}`)
     res.status(400).json({ error })
   }
   }  

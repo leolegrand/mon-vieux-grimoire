@@ -7,8 +7,7 @@ const compressImage = async (req, res, next) => {
     try {
         const newFilename = req.file.filename.replace(/\.[^.]+$/, ".webp")
       await sharp(req.file.path)
-        .toFormat('webp')
-        .toFile(`images/${newFilename}`);
+        .webp({quality: 50}).toFile(`images/${newFilename}`);
       // Delete the original image
       fs.unlinkSync(req.file.path);
       req.file.path = `images/${newFilename}`;
