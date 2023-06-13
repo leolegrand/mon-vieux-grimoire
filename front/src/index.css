@@ -96,6 +96,7 @@ h1 {
 }
 
 button, .button {
+  z-index: 1;
   color: #2C1810;
   background-color: #D9A963;
   text-decoration: none;

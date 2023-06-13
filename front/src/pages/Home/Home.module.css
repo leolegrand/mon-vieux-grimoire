@@ -53,3 +53,9 @@
     justify-content: space-evenly;
     margin-block: 140px;
 }
+
+.path{
+    position: absolute;
+    z-index: 0;
+    transform: translate(50px);
+}

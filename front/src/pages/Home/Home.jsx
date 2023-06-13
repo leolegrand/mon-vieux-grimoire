@@ -4,6 +4,7 @@ import BookItem from '../../components/Books/BookItem/BookItem';
 import Banner from '../../images/home_banner.jpg';
 import styles from './Home.module.css';
 import { getBooks } from '../../lib/common';
+import path from '../../images/path.png';
 
 function Home() {
   const [books, setBooks] = useState(null);
@@ -29,6 +30,7 @@ function Home() {
         <header className={styles.head}>
           <h1>Nos Livres</h1>
           <p>à lire et à relire</p>
+          <img src={path} alt="path" className={styles.path} />
           <Link to="/Ajouter" className="button">+ Ajouter un livre</Link>
         </header>
         <section className={styles.bookList}>

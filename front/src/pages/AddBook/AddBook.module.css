@@ -23,3 +23,7 @@
 .Created img {
     margin-block: 30px;
 }
+
+.Path{
+  position: absolute;  
+}

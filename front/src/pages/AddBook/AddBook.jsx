@@ -6,6 +6,7 @@ import BackArrow from '../../components/BackArrow/BackArrow';
 import { useUser } from '../../lib/customHooks';
 import { APP_ROUTES } from '../../utils/constants';
 import bookAdd from '../../images/book_add.jpg';
+import path from '../../images/path.png';
 
 function AddBook() {
   const navigate = useNavigate();
@@ -32,6 +33,7 @@ function AddBook() {
         ) : (
           <div className={styles.Created}>
             <h1>Merci!</h1>
+            <img src={path} alt="path" className={styles.Path} />
             <p>votre livre a bien été publié</p>
             <img src={bookAdd} alt="Livre ajouté" />
             <Link to="/" className="button">Retour à l&apos;accueil</Link>

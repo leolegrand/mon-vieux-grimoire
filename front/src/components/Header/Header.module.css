@@ -4,6 +4,7 @@
     min-height: 91px;
     display: flex;
     align-items: center;
+    padding-left: 50px;
 }
 
 .Header div {
