@@ -2,7 +2,7 @@
 ![Mon Vieux Grimoire book page desktop](./readme-preview-1.png 'KMon Vieux Grimoire book page desktop')
 ![Mon Vieux Grimoire form page desktop](./readme-preview-2.png 'Mon Vieux Grimoire form page desktop')
 
-# 🏠 Mon Vieux Grimoire
+# 📚 Mon Vieux Grimoire
 
 Mon Vieux Grimoire is a platform for sharing and rating books, users can connect securely to their account and thus access an API with a CRUD to manage their favorite books.
 For this project, I was responsible for the entire back-end application, its implementation, security and architecture.
